@@ -27,8 +27,7 @@
  */
 
 // ─── Extension Identity ──────────────────────────────────────
-const extensionName       = 'ST-JanitorAI-Importer';
-const extensionFolderPath = `scripts/extensions/third-party/${extensionName}`;
+
 
 // ─── Status Helpers ──────────────────────────────────────────
 
@@ -433,15 +432,48 @@ async function handleImport() {
 // ─── Extension Initialization ────────────────────────────────
 
 jQuery(async () => {
-    // Load the settings panel HTML template from the extension folder
-    const settingsHtml = await $.get(`${extensionFolderPath}/index.html`);
+    // Inlined HTML template to avoid $.get() path issues
+    const settingsHtml = `
+<div class="extension_settings_block" id="janitor-importer-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>JanitorAI Character Importer</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content" style="display: none;">
+            <div class="janitor-importer-container">
+                <p class="margin-bot-10">
+                    Paste the <b>Page Source</b> (Ctrl+U) of a JanitorAI character profile page below.
+                </p>
+                
+                <textarea id="janitor_html_input" 
+                          class="text_al" 
+                          placeholder="Paste character page source here..."
+                          rows="6"
+                          style="width: 100%; font-family: monospace; font-size: 0.8em; margin-bottom: 10px;"></textarea>
+                
+                <div id="janitor_status_area" class="janitor-status-area" style="display: none; margin-bottom: 10px;">
+                    <span id="janitor_status_text"></span>
+                </div>
 
-    // Append to the RIGHT column of the extensions settings panel
-    // (extensions_settings2 = right column, for visual/UI-related extensions)
-    $('#extensions_settings2').append(settingsHtml);
+                <div class="flex-container flex-align-center flex-gap-10">
+                    <button id="janitor_import_btn" class="menu_button">
+                        <i class="fa-solid fa-file-import"></i> Import Character
+                    </button>
+                    <small style="opacity: 0.6;">V2 Card Format</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    `;
+
+    // Append to the primary extensions settings panel
+    $('#extensions_settings').append(settingsHtml);
 
     // Bind the import button
     $('#janitor_import_btn').on('click', handleImport);
 
     console.log('[JanitorAI Importer] Extension loaded (v2 — pure frontend).');
 });
+

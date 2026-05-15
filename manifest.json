@@ -1,0 +1,13 @@
+{
+    "display_name": "JanitorAI Character Importer",
+    "loading_order": 10,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "bipul",
+    "version": "1.0.0",
+    "homePage": "https://github.com/bipul276/ST-JanitorAI-Importer",
+    "auto_update": true,
+    "description": "Import characters directly from JanitorAI URLs into your SillyTavern roster. Scrapes character data from JanitorAI pages and converts it to V2 Character Card format."
+}

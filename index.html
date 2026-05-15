@@ -1,0 +1,55 @@
+<!-- JanitorAI Character Importer — Settings Panel UI (v2 — Pure Frontend) -->
+<!-- Loaded by index.js via $.get() and appended to the extensions settings panel. -->
+
+<div id="janitor-importer-settings" class="janitor-importer-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>JanitorAI Importer</b>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content">
+
+            <!-- Step-by-step instructions -->
+            <div class="janitor-instructions">
+                <p class="janitor-instructions-title">
+                    <i class="fa-solid fa-circle-info"></i>
+                    How to import a character:
+                </p>
+                <ol>
+                    <li><b>Open</b> the JanitorAI character page in your browser.</li>
+                    <li>Press <kbd>Ctrl</kbd>+<kbd>U</kbd> (or right-click → <em>View Page Source</em>).</li>
+                    <li>Press <kbd>Ctrl</kbd>+<kbd>A</kbd> to select all, then <kbd>Ctrl</kbd>+<kbd>C</kbd> to copy.</li>
+                    <li><b>Paste</b> the entire page source into the box below.</li>
+                </ol>
+            </div>
+
+            <hr>
+
+            <!-- Textarea for pasting HTML source -->
+            <label for="janitor_html_input">
+                <span>Paste Page Source Here</span>
+            </label>
+            <textarea
+                id="janitor_html_input"
+                class="text_pole janitor-textarea"
+                rows="8"
+                placeholder="Paste the entire HTML source code from JanitorAI here..."
+                spellcheck="false"
+            ></textarea>
+
+            <!-- Import button -->
+            <div id="janitor_import_btn_wrap" class="menu_button_group">
+                <div id="janitor_import_btn" class="menu_button menu_button_icon" title="Extract character data and import into SillyTavern">
+                    <i class="fa-solid fa-file-import"></i>
+                    <span>Import Character</span>
+                </div>
+            </div>
+
+            <!-- Status message area -->
+            <div id="janitor_status_area" class="janitor-status-area" style="display: none;">
+                <div id="janitor_status_text" class="janitor-status-text"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
